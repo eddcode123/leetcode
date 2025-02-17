@@ -20,8 +20,6 @@ class Solution:
         """
 
         # edge case
-        if not nums:
-            return 0
 
         insert_pos = 1
         count = 1
