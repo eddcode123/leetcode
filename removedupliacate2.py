@@ -18,7 +18,12 @@ class Solution:
             >>> print(result)
             5 [1,1,2,2,3,1]
         """
-        insert_pos = 1
+
+        # edge case
+        if not nums:
+            return 0
+    
+        insrt_pos = 1
         count = 1
         max_occurrence = 2
 
@@ -29,11 +34,11 @@ class Solution:
                 count = 1
         
             if count <= max_occurrence:
-                if insert_pos != i:
-                    nums[insert_pos] = nums[i]
-                insert_pos += 1
+                if insrt_pos != i:
+                    nums[insrt_pos] = nums[i]
+                insrt_pos += 1
         
-        return insert_pos
+        return insrt_pos
 
     
 # testcase
