@@ -18,7 +18,7 @@ class Solution:
             >>> print(result)
             7
         """
-        most_profitable = 0
+        total_profit = 0
         today = 0
 
         for tomorrow in range(1, len(prices)):
@@ -27,14 +27,14 @@ class Solution:
 
             if profit > 0:
                 # Add to the total profit if it's profitable
-                most_profitable += profit
+                total_profit += profit
                 # Move to the next day after selling
                 today += 1
             else:
                 # Move to the next day if no profit is possible
                 today = tomorrow
         
-        return most_profitable
+        return total_profit
 
 
 # test case
