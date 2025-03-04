@@ -48,6 +48,7 @@ class Solution:
 
         Returns:
             ListNode: Updated head of the sorted singly linked list.
+        
         """
         # Check if the list is empty or has only one node
         if not head or not head.next:
