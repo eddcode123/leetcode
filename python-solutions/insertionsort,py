@@ -1,0 +1,90 @@
+from typing import Optional
+
+# Definition for singly-linked list Node.
+class ListNode:
+    def __init__(self, val=0, next=None):
+        self.val = val
+        self.next = next
+
+
+class SinglyLinkedList(ListNode):
+    def __init__(self, val):
+        self.head = ListNode(val)
+    
+
+    def insertNode(self, value):
+        node = ListNode(value)
+        temp = self.head
+        while temp.next is not None:
+            temp = temp.next
+        temp.next = node
+    
+    def display(self):
+        temp = self.head
+
+        while temp is not None:
+            print(f'{temp.val}', end=' -> ')
+            temp = temp.next
+        print('None')
+    
+    def get_head(self):
+        return self.head
+
+# Function to display a singly linked list starting from a given head node
+def display_linked_list(head: Optional[ListNode]):
+    temp = head
+    while temp is not None:
+        print(f'{temp.val}', end=' -> ')
+        temp = temp.next
+    print('None')
+
+
+class Solution:
+    def insertionSortList(self, head: Optional[ListNode]) -> Optional[ListNode]:
+        """Sort a singly linked list using insertion sort.
+
+        Args:
+            head (ListNode): Head of the singly linked list.
+
+        Returns:
+            ListNode: Updated head of the sorted singly linked list.
+        """
+        # Check if the list is empty or has only one node
+        if not head or not head.next:
+            return head
+
+        # Dummy node to simplify edge case handling
+        dummy = ListNode(0)
+        current = head
+
+        while current:
+            next_node = current.next # Save the next node to process later
+
+            # Find the correct place to insert the current node
+            temp = dummy
+        
+            while (temp.next and temp.next.val < current.val):
+                temp = temp.next
+            
+            # Insert the current node into the sorted part
+            current.next = temp.next
+            temp.next = current          
+            # Move to the next node
+            current = next_node
+
+        return dummy.next
+
+
+
+# test case
+solution = Solution()
+
+linkedlist = SinglyLinkedList(4)
+linkedlist.insertNode(2)
+linkedlist.insertNode(1)
+linkedlist.insertNode(3)
+
+result = solution.insertionSortList(linkedlist.get_head())
+
+linkedlist.display()
+display_linked_list(result)
